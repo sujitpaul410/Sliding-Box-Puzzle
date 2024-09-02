@@ -1,91 +1,91 @@
-
-//
-// Disclaimer:
-// ----------
-//
-// This code will work only if you selected window, graphics and audio.
-//
-// Note that the "Run Script" build phase will copy the required frameworks
-// or dylibs to your application bundle so you can execute it on any OS X
-// computer.
-//
-// Your resource files (images, sounds, fonts, ...) are also copied to your
-// application bundle. To get the path to these resources, use the helper
-// function `resourcePath()` from ResourcePath.hpp
-//
-
-#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-
-// Here is a small helper for you! Have a look.
+#include <iostream>
 #include "ResourcePath.hpp"
+
+void initImage(sf::Texture& texture, sf::Sprite& background, std::string texName, sf::Vector2f targetSize, sf::Vector2f pos)
+{
+    if (!texture.loadFromFile(resourcePath() + texName))
+    {
+        std::cout << "Error loading texture" << std::endl;
+        return EXIT_FAILURE;
+    }
+    std::cout<<"X: "<<texture.getSize().x<<" Y: "<<texture.getSize().y<<std::endl;
+    // background.setTextureRect(sf::IntRect(sf::Rect(0, 0, 1000, 1000)));
+    background.setTexture(texture);
+    //    sf::Vector2f targetSize(800.0f, 600.0f);
+    //    background.setPosition(sf::Vector2f(128, 70));
+    background.setPosition(pos);
+    background.setScale(targetSize.x / background.getLocalBounds().width, targetSize.y / background.getLocalBounds().height);
+}
+
+void initHeaderText(sf::Text& headerText, sf::Font& font)
+{
+    if(!font.loadFromFile(resourcePath() + "SamuraiBlast.ttf"))
+    {
+        std::cout<<"Error loading font"<<std::endl;
+        return EXIT_FAILURE;
+    }
+    headerText.setFont(font);
+    headerText.setString("Sliding Box Puzzle");
+    headerText.setCharacterSize(60);
+    headerText.setFillColor(sf::Color::Yellow);
+    headerText.setStyle(sf::Text::Bold);
+    
+    sf::FloatRect textRect = headerText.getLocalBounds();
+    headerText.setOrigin(textRect.left + textRect.width/2.0f, textRect.top-15);
+    headerText.setPosition(sf::Vector2f(512, 0));
+    headerText.setOutlineThickness(10.0f);
+}
 
 int main(int, char const**)
 {
-    // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-
-    // Set the Icon
-    sf::Image icon;
-    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
-        return EXIT_FAILURE;
-    }
-    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile(resourcePath() + "background.jpg")) {
-        return EXIT_FAILURE;
-    }
-    sf::Sprite sprite(texture);
-
-    // Create a graphical text to display
+    sf::RenderWindow window(sf::VideoMode(1024, 768), "Sliding Box-Puzzle", sf::Style::Titlebar | sf::Style::Close);
+    
+    sf::Sprite bgSprite;
+    sf::Texture bgTexture;
+    
+    sf::Sprite bgFrameSprite;
+    sf::Texture bgFrameTexture;
+    
+    sf::Sprite boardSprite;
+    sf::Texture boardTexture;
+    
     sf::Font font;
-    if (!font.loadFromFile(resourcePath() + "tuffy.ttf")) {
-        return EXIT_FAILURE;
-    }
-    sf::Text text("Hello SFML", font, 50);
-    text.setFillColor(sf::Color::Black);
-
-    // Load a music to play
-    sf::Music music;
-    if (!music.openFromFile(resourcePath() + "doodle_pop.ogg")) {
-        return EXIT_FAILURE;
-    }
-
-    // Play the music
-    music.play();
-
-    // Start the game loop
+    sf::Text headerText;
+    
+    initImage(boardTexture, boardSprite, "sample.jpg", sf::Vector2f(800.0f, 600.0f), sf::Vector2f(146, 97));
+    
+    initImage(bgTexture, bgSprite, "wood_bg.jpg", sf::Vector2f(1024.0f, 768.0f), sf::Vector2f(0, 0));
+    
+    initImage(bgFrameTexture, bgFrameSprite, "wood_frame.png", sf::Vector2f(823.0f, 623.0f), sf::Vector2f(128, 75));
+    sf::RectangleShape bgFrameOutline(sf::Vector2f(823, 623));
+    bgFrameOutline.setFillColor(sf::Color(150, 50, 250));
+    bgFrameOutline.setPosition(128, 75);
+    bgFrameOutline.setOutlineThickness(3.0f);
+    bgFrameOutline.setOutlineColor(sf::Color::Black);
+    
+    initHeaderText(headerText, font);
+    
     while (window.isOpen())
     {
-        // Process events
         sf::Event event;
+        
         while (window.pollEvent(event))
         {
-            // Close window: exit
-            if (event.type == sf::Event::Closed) {
+            if (event.type == sf::Event::Closed)
                 window.close();
-            }
-
-            // Escape pressed: exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                window.close();
-            }
         }
-
-        // Clear screen
-        window.clear();
-
-        // Draw the sprite
-        window.draw(sprite);
-
-        // Draw the string
-        window.draw(text);
-
-        // Update the window
+        
+        
+        window.clear(sf::Color::Black);
+        window.draw(bgSprite);
+        window.draw(headerText);
+        window.draw(bgFrameOutline);
+        window.draw(boardSprite);
+        window.draw(bgFrameSprite);
         window.display();
     }
-
+    
     return EXIT_SUCCESS;
 }
+
