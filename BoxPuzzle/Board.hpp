@@ -1,7 +1,10 @@
 #ifndef Board_hpp
 #define Board_hpp
 
-#include"Game.hpp"
+
+#include <iostream>
+#include "ResourcePath.hpp"
+#include "Background.hpp"
 
 class Board{
   
@@ -10,13 +13,16 @@ private:
     sf::Sprite boardSprite;
     sf::Texture boardTexture;
     
-    Game *game;
-    
     void loadBoard();
+    
+    void initImage(sf::Texture& texture, sf::Sprite& background, std::string texName, sf::Vector2f targetSize, sf::Vector2f pos);
+  
     
 public:
     
-    void init();
+    Board();
+    
+    void render(sf::RenderWindow* window);
 };
 
 #endif

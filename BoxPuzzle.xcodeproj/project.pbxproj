@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8107BF472C87224E00982F17 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8107BF452C87224E00982F17 /* Game.cpp */; };
 		8107BF4A2C87277000982F17 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8107BF482C87277000982F17 /* Board.cpp */; };
+		8108F11C2C88645C001822C3 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8108F11A2C88645C001822C3 /* Window.cpp */; };
+		8108F11F2C8878E0001822C3 /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8108F11D2C8878E0001822C3 /* Background.cpp */; };
 		81321CFE2C84BA60007A67D8 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 81321CFD2C84BA60007A67D8 /* ResourcePath.mm */; };
 		81321D012C84BA60007A67D8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81321D002C84BA60007A67D8 /* main.cpp */; };
 		81321D042C84BA60007A67D8 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81321D032C84BA60007A67D8 /* background.jpg */; };
@@ -27,6 +29,10 @@
 		8107BF462C87224E00982F17 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		8107BF482C87277000982F17 /* Board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
 		8107BF492C87277000982F17 /* Board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Board.hpp; sourceTree = "<group>"; };
+		8108F11A2C88645C001822C3 /* Window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
+		8108F11B2C88645C001822C3 /* Window.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
+		8108F11D2C8878E0001822C3 /* Background.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
+		8108F11E2C8878E0001822C3 /* Background.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Background.hpp; sourceTree = "<group>"; };
 		81321CF82C84BA60007A67D8 /* BoxPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81321CFD2C84BA60007A67D8 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		81321CFF2C84BA60007A67D8 /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
@@ -72,6 +78,10 @@
 		81321CFA2C84BA60007A67D8 /* BoxPuzzle */ = {
 			isa = PBXGroup;
 			children = (
+				8108F11B2C88645C001822C3 /* Window.hpp */,
+				8108F11A2C88645C001822C3 /* Window.cpp */,
+				8108F11D2C8878E0001822C3 /* Background.cpp */,
+				8108F11E2C8878E0001822C3 /* Background.hpp */,
 				81321CFD2C84BA60007A67D8 /* ResourcePath.mm */,
 				81321CFF2C84BA60007A67D8 /* ResourcePath.hpp */,
 				8107BF452C87224E00982F17 /* Game.cpp */,
@@ -199,7 +209,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8107BF472C87224E00982F17 /* Game.cpp in Sources */,
+				8108F11C2C88645C001822C3 /* Window.cpp in Sources */,
 				81321D012C84BA60007A67D8 /* main.cpp in Sources */,
+				8108F11F2C8878E0001822C3 /* Background.cpp in Sources */,
 				8107BF4A2C87277000982F17 /* Board.cpp in Sources */,
 				81321CFE2C84BA60007A67D8 /* ResourcePath.mm in Sources */,
 			);

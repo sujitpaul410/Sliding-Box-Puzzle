@@ -1,17 +1,16 @@
 #include "Game.hpp"
-#include "Board.hpp""
 
 int main(int, char const**)
 {
     
-    Game *game=Game::getInstance();
-    game->initGame();
+    Game game;
     
-    Board board;
-    board.init();
-    
-    game->runGame();
-    
+    while(!game.getWindow()->isDone())
+    {
+        game.handleInput();
+        game.update();
+        game.render();
+    }
     
     return EXIT_SUCCESS;
 }
